@@ -28,6 +28,10 @@ function loadConfig() {
       log(i + ":", config[i]);
     }
   }
+  
+  config.key = fs.readFileSync("localhost.key", "utf8");
+  config.cert = fs.readFileSync("localhost.cert", "utf8");
+
   return config;
 }
 
@@ -110,27 +114,49 @@ app.get("/authenticate/:code", function (req, res) {
   });
 });
 
-function isUserOwner(organization, token) {
-  const headers = { Authorization: `token ${token}` };
+function githubHeaders(token) {
+  return { Authorization: `token ${token}` };
+}
 
-  // Because we cannot directly check if the user how sends the token is a member of a organization, we check if a github user is a member of organization, which only a member of said organization can do
+function listActiveDirectoryContent(organization, repo, token) {
+  const headers = githubHeaders(token);
+
   return axios.get(
-    `https://api.github.com/orgs/${organization}/memberships/beowulf11`,
+    `https://api.github.com/repos/${organization}/${repo}/contents/config/active`,
     { headers: headers }
   );
 }
 
+function getStudents(data) {
+  const students = [];
+  data.forEach((node) => {
+    if (node.type === "file") {
+      students.push(node.name);
+    }
+  });
+
+  return students;
+}
+
 app.get("/config/:token", (req, res, next) => {
   const organization = config.admin.owner;
-  res.json(config.admin);
+  const repo = config.glmRepo;
 
-  // isUserOwner(organization, req.params.token)
-  //   .then(() => {
-  //     res.json(config.admin);
-  //   })
-  //   .catch((error) => {
-  //     next(error);
-  //   });
+  listActiveDirectoryContent(organization, repo, req.params.token)
+    .then((response) => {
+      const students = getStudents(response.data);
+      const data = config.admin;
+      data.assignments = config.assignments;
+      data.students = students;
+      res.json(data);
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
+app.get("/assignments", (req, res, next) => {
+  res.json(config.assignments);
 });
 
 module.exports.config = config;

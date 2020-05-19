@@ -1,7 +1,7 @@
 import React from "react";
 import Cookies from "universal-cookie";
 
-import Pulls from "./pulls/pulls";
+import Assignments from "./assignments/assignments";
 import NavigationBar from "./navigation-bar/navigation-bar";
 import Repositories from "./repositories/repositories";
 import Admin from "./admin/admin";
@@ -11,13 +11,15 @@ import { Switch as RouterSwitch, Route, Redirect } from "react-router-dom";
 function Switch() {
   const cookies = new Cookies();
   const selectedRepositoryName = cookies.get(cookiesKeys.SELECTED_REPOSITORY);
-  const selectedRepositoryOwner = cookies.get(cookiesKeys.OWNER);
+  const selectedRepositoryOwner = cookies.get(
+    cookiesKeys.SELECTED_REPOSITORY_OWNER
+  );
 
   return (
     <>
       <NavigationBar />
       <RouterSwitch>
-        <Route path="/:owner/:selected_repository" component={Pulls} />
+        <Route path="/:owner/:selected_repository" component={Assignments} />
         <Route path="/repositories" component={Repositories} />
         <Route path="/admin" component={Admin} />
         <Route path="/">

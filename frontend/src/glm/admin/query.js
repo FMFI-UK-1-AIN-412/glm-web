@@ -1,6 +1,6 @@
 import { gql } from "apollo-boost";
 
-export const ADMIN_PULLS = gql`
+export const STUDENT_SUBMISSIONS = gql`
   query pulls($name: String!, $owner: String!) {
     repository(name: $name, owner: $owner) {
       url
@@ -21,4 +21,4 @@ export const ADMIN_PULLS = gql`
   }
 `;
 
-export default ADMIN_PULLS;
+export default STUDENT_SUBMISSIONS;

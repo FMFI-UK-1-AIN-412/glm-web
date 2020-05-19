@@ -60,7 +60,7 @@ function NavigationBar() {
         <HeaderButton
           variant="dark"
           onClick={() => {
-            for (const [_, value] of Object.entries(cookiesKeys)) {
+            for (const [, value] of Object.entries(cookiesKeys)) {
               cookies.remove(value, { path: "/" });
             }
             window.location.href = "/";

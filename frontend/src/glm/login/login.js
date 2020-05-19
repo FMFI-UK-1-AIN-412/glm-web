@@ -3,7 +3,7 @@ import axios from "axios";
 import Cookies from "universal-cookie";
 import GitHubLogin from "github-login";
 
-import { cookiesKeys } from "../config";
+import { cookiesKeys, serverUrl } from "../config";
 
 const onSuccess = (response) => {
   getToken(response.code);
@@ -13,7 +13,7 @@ const onFailure = (response) => console.error(response);
 const getToken = (code) => {
   console.log(code);
   axios
-    .get(`http://localhost:9999/authenticate/${code}`)
+    .get(`${serverUrl}/authenticate/${code}`)
     .then((response) => {
       const cookies = new Cookies();
       const date = new Date();
@@ -38,7 +38,7 @@ function Login() {
           clientId="45b365f9070afe431bc8"
           onSuccess={onSuccess}
           onFailure={onFailure}
-          redirectUri={"http://localhost:3000/callback"}
+          redirectUri={"https://localhost:3000/callback"}
           scope={["repo", "admin:org", "user"]}
         />
       </header>

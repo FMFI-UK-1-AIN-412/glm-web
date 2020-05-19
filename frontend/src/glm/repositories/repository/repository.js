@@ -14,7 +14,9 @@ function Repository(props) {
     const repositoryName = parent.name;
     const ownerLogin = parent.owner.login;
     cookies.set(cookiesKeys.SELECTED_REPOSITORY, repositoryName, { path: "/" });
-    cookies.set(cookiesKeys.OWNER, ownerLogin, { path: "/" });
+    cookies.set(cookiesKeys.SELECTED_REPOSITORY_OWNER, ownerLogin, {
+      path: "/",
+    });
     history.push(`/${ownerLogin}/${repositoryName}`);
   };
 

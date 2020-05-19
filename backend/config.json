@@ -7,7 +7,22 @@
   "oauth_method": "POST",
   "admin": {
     "owner": "glm-testing",
-    "repoPrefix": "osprog18-",
-    "students": ["testing01", "testing02", "ERROR REPOSITORY"]
-  }
+    "repoPrefix": "osprog18-"
+  },
+  "glmRepo": "osprog18-teacher",
+  "assignments": [
+    "pu01",
+    "pu02",
+    "pu03",
+    "pu04",
+    "pu05",
+    "pu06",
+    "pu07",
+    "pu08",
+    "pu09",
+    "pu10",
+    "pu11",
+    "pu12",
+    "bonus"
+  ]
 }
