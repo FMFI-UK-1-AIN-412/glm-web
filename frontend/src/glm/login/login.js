@@ -38,7 +38,7 @@ function Login() {
           clientId="45b365f9070afe431bc8"
           onSuccess={onSuccess}
           onFailure={onFailure}
-          redirectUri={"https://localhost:3000/callback"}
+          redirectUri={"http://localhost:3000/callback"}
           scope={["repo", "admin:org", "user"]}
         />
       </header>

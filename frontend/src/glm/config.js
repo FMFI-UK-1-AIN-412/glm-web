@@ -4,7 +4,7 @@ export const config = {
   students: ["testing01", "testing02", "ERROR REPOSITORY"],
 };
 
-export const serverUrl = "https://localhost:9999";
+export const serverUrl = "http://localhost:9999";
 
 export const cookiesKeys = {
   TOKEN: "token",
