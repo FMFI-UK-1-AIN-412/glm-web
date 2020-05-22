@@ -32,9 +32,6 @@ function loadConfig() {
   config.oauth_client_id = fs.readFileSync("client-id", "utf8");
   config.oauth_client_secret = fs.readFileSync("client-secret", "utf8");
 
-  config.key = fs.readFileSync("localhost.key", "utf8");
-  config.cert = fs.readFileSync("localhost.cert", "utf8");
-
   return config;
 }
 
