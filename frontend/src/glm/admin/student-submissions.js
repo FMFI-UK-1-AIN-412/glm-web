@@ -12,6 +12,14 @@ const CenteredTableData = styled.td`
 
 const PullRequestLink = styled.a`
   padding: 0 10px;
+
+  color: ${(props) =>
+    props.state === "open"
+      ? "#5DBA5B"
+      : props.state === "merged"
+      ? "#6843BA"
+      : "#BA3637"};
+
   &:first-child {
     padding: 0;
   }
@@ -71,7 +79,7 @@ function StudentSubmissions(props) {
               <OverlayTrigger
                 overlay={<Tooltip>{`state - ${pr.state}`}</Tooltip>}
               >
-                <PullRequestLink href={pr.url}>
+                <PullRequestLink state={pr.state.toLowerCase()} href={pr.url}>
                   {pr.headRefName}
                 </PullRequestLink>
               </OverlayTrigger>
