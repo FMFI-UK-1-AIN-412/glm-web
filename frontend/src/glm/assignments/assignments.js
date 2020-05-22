@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { Row, Container, Col } from "react-bootstrap"
 import { useQuery } from "@apollo/react-hooks";
 
 import { serverUrl } from "../config";
@@ -54,13 +55,19 @@ function Assignments() {
 
   return (
     <div>
-      {assignemntBranches.map((assignment) => (
-        <Assignment
-          key={assignment}
-          assignment={assignment}
-          pullRequests={pullRequests}
-        />
-      ))}
+			<Container fluid={true}>
+				<Row>
+					<Col xl={{ span: 8, offset: 2}}>
+						{assignemntBranches.map((assignment) => (
+							<Assignment
+								key={assignment}
+								assignment={assignment}
+								pullRequests={pullRequests}
+							/>
+						))}
+					</Col>
+				</Row>
+      </Container>
     </div>
   );
 }
