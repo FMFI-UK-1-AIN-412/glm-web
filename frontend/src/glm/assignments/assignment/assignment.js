@@ -6,10 +6,6 @@ const AssignmentList = styled(ListGroup)`
   &:nth-child(n) {
     margin-bottom: 10px;
   }
-
-  &:last-child {
-    margin: 0;
-  }
 `;
 
 const RowItem = styled(ListGroup.Item)`

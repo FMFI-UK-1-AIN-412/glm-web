@@ -3,6 +3,8 @@
   "oauth_port": 443,
   "oauth_path": "/login/oauth/access_token",
   "oauth_method": "POST",
+  "port": 9999,
+
   "admin": {
     "owner": "glm-testing",
     "repoPrefix": "osprog18-"

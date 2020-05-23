@@ -1,9 +1,30 @@
 import React from "react";
 import axios from "axios";
+import styled from "styled-components";
 import Cookies from "universal-cookie";
 import GitHubLogin from "github-login";
 
-import { cookiesKeys, serverUrl } from "../config";
+import {
+  serverUrl,
+  cookiesKeys,
+  githubClientId,
+  githubRedirectURI,
+} from "../config";
+
+const Wrapper = styled.div`
+  text-align: center;
+`;
+
+const Header = styled.header`
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+`;
 
 const onSuccess = (response) => {
   getToken(response.code);
@@ -32,17 +53,17 @@ const getToken = (code) => {
 
 function Login() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <Wrapper>
+      <Header>
         <GitHubLogin
-          clientId="45b365f9070afe431bc8"
+          scope={["repo"]}
           onSuccess={onSuccess}
           onFailure={onFailure}
-          redirectUri={"http://localhost:3000/callback"}
-          scope={["repo"]}
+          clientId={githubClientId}
+          redirectUri={githubRedirectURI}
         />
-      </header>
-    </div>
+      </Header>
+    </Wrapper>
   );
 }
 

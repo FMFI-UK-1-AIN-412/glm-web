@@ -1,11 +1,10 @@
 import React from "react";
-import "./App.css";
 import { ApolloProvider } from "@apollo/react-hooks";
 import ApolloClient from "apollo-boost";
 import Cookies from "universal-cookie";
 import { BrowserRouter as Router } from "react-router-dom";
 
-import { cookiesKeys, basename } from "./glm/config";
+import { cookiesKeys } from "./glm/config";
 import Login from "./glm/login/login.js";
 import Switch from "./glm/switch";
 
@@ -22,7 +21,7 @@ function App() {
     });
     return (
       <ApolloProvider client={client}>
-        <Router basename={basename}>
+        <Router basename={process.env.PUBLIC_URL}>
           <Switch />
         </Router>
       </ApolloProvider>

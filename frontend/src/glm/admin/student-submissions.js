@@ -4,7 +4,6 @@ import { useQuery } from "@apollo/react-hooks";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
 import STUDENT_SUBMISSIONS from "./query";
-// import Pull from "../pulls/pull/pull";
 
 const CenteredTableData = styled.td`
   text-align: center;
