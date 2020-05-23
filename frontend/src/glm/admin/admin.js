@@ -4,8 +4,7 @@ import styled from "styled-components";
 import Cookies from "universal-cookie";
 import { Table } from "react-bootstrap";
 
-import { serverUrl } from "../config";
-import { cookiesKeys } from "../config";
+import { serverUrl, cookiesKeys } from "../config";
 import StudentSubmissions from "./student-submissions";
 
 const CenteredParagraph = styled.p`
