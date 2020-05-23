@@ -1,7 +1,7 @@
 // Fill these in
-export const serverUrl = "http://localhost:9999";
-export const githubClientId = "45b365f9070afe431bc8";
-export const githubRedirectURI = "http://localhost:3000/callback";
+export const serverUrl = "";
+export const githubClientId = "";
+export const githubRedirectURI = "";
 
 export const cookiesKeys = {
   TOKEN: "token",

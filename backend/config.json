@@ -6,23 +6,9 @@
   "port": 9999,
 
   "admin": {
-    "owner": "glm-testing",
-    "repoPrefix": "osprog18-"
+    "owner": "",
+    "repoPrefix": ""
   },
-  "glmRepo": "osprog18-teacher",
-  "assignments": [
-    "pu01",
-    "pu02",
-    "pu03",
-    "pu04",
-    "pu05",
-    "pu06",
-    "pu07",
-    "pu08",
-    "pu09",
-    "pu10",
-    "pu11",
-    "pu12",
-    "bonus"
-  ]
+  "glmRepo": "",
+  "assignments": []
 }
