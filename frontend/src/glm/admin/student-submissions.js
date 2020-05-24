@@ -76,7 +76,9 @@ function StudentSubmissions(props) {
           <CenteredTableData key={assignment}>
             {assignmentSubmissions.map((pr) => (
               <OverlayTrigger
-                overlay={<Tooltip>{`state - ${pr.state}`}</Tooltip>}
+                overlay={
+                  <Tooltip>{`${studentGithubLogin}: state - ${pr.state}`}</Tooltip>
+                }
               >
                 <PullRequestLink state={pr.state.toLowerCase()} href={pr.url}>
                   {pr.headRefName}
