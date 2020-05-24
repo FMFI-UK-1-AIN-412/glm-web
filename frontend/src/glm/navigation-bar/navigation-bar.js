@@ -11,14 +11,16 @@ const HeaderBadge = styled(Badge)`
 `;
 
 const HeaderButton = styled(Button)`
-  margin: 0 5px;
+  margin: 0 3px;
+  margin-top: 5px;
 `;
 
 const StyledNavbar = styled(Navbar)`
-  @media only screen and (max-width: 600px) {
-    display: flex;
-    flex-flow: column;
-  }
+  background-color: white;
+`;
+
+const NavBarPadding = styled.div`
+  height: 59px;
 `;
 
 function NavigationBar() {
@@ -48,28 +50,31 @@ function NavigationBar() {
   }
 
   return (
-    <StyledNavbar>
-      <Navbar.Brand>GLM</Navbar.Brand>
-      {headerTitle}
-      <Navbar.Collapse className="justify-content-end">
-        {!isSelectingRepository ? (
-          <HeaderButton onClick={() => history.push("/repositories")}>
-            Select different repository
+    <>
+      <StyledNavbar collapseOnSelect expand="md" fixed="top">
+        {headerTitle}
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse className="justify-content-end">
+          {!isSelectingRepository ? (
+            <HeaderButton onClick={() => history.push("/repositories")}>
+              Select different repository
+            </HeaderButton>
+          ) : null}
+          <HeaderButton
+            variant="dark"
+            onClick={() => {
+              for (const [, value] of Object.entries(cookiesKeys)) {
+                cookies.remove(value, { path: "/" });
+              }
+              window.location.href = "/";
+            }}
+          >
+            Signed out
           </HeaderButton>
-        ) : null}
-        <HeaderButton
-          variant="dark"
-          onClick={() => {
-            for (const [, value] of Object.entries(cookiesKeys)) {
-              cookies.remove(value, { path: "/" });
-            }
-            window.location.href = "/";
-          }}
-        >
-          Signed out
-        </HeaderButton>
-      </Navbar.Collapse>
-    </StyledNavbar>
+        </Navbar.Collapse>
+      </StyledNavbar>
+      <NavBarPadding />
+    </>
   );
 }
 

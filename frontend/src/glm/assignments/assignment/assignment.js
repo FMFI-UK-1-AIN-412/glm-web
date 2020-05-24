@@ -4,7 +4,7 @@ import { ListGroup, Badge, Button } from "react-bootstrap";
 
 const AssignmentList = styled(ListGroup)`
   &:nth-child(n) {
-    margin-bottom: 10px;
+    margin: 5px 0;
   }
 `;
 
